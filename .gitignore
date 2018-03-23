@@ -1,0 +1,11 @@
+Library
+obj
+Temp
+*.booproj
+*.csproj
+*.unityproj
+*.pidb
+*.sln
+*.userprefs
+*.txt
+*.suo
