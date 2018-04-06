@@ -6,6 +6,7 @@ public class Respawn : MonoBehaviour {
     public int _class;
     public GameObject _war;
     public GameObject _arch;
+    public GameObject _wiz;
 
     private void Awake()
     {
@@ -26,6 +27,13 @@ public class Respawn : MonoBehaviour {
 
             Instantiate(_arch, transform.position, transform.rotation);
             Debug.Log("arch");
+        }
+        if (_class == 3)
+        {
+
+
+            Instantiate(_wiz, transform.position, transform.rotation);
+            Debug.Log("wiz");
         }
     }
 

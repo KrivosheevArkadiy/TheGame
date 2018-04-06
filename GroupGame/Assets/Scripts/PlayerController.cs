@@ -69,6 +69,7 @@ public class PlayerController : MonoBehaviour {
         }
         if (Input.GetKey(KeyCode.Mouse0))
             _anim.SetTrigger("Attack1Trigger");
+        
 
     }
 }

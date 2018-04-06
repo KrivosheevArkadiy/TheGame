@@ -192,7 +192,7 @@ GameObject:
   - component: {fileID: 696926028}
   - component: {fileID: 696926031}
   m_Layer: 0
-  m_Name: Cube
+  m_Name: respawn
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -204,12 +204,12 @@ Transform:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 696926026}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 7.7, y: 1.95, z: 12.61}
   m_LocalScale: {x: 1, y: 0.1, z: 1}
   m_Children: []
-  m_Father: {fileID: 1529260244}
-  m_RootOrder: 0
+  m_Father: {fileID: 0}
+  m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!23 &696926028
 MeshRenderer:
@@ -279,6 +279,7 @@ MonoBehaviour:
   _class: 0
   _war: {fileID: 1417749868443272, guid: ac7cb432583b0964a80b67e6b6b9813f, type: 2}
   _arch: {fileID: 1007330566971410, guid: 99f40ac4eedf3f0409548953c55884ad, type: 2}
+  _wiz: {fileID: 1507644355021494, guid: bf98e60095343dd459189fec6a4a5181, type: 2}
 --- !u!1 &1404519514
 GameObject:
   m_ObjectHideFlags: 0
@@ -441,8 +442,7 @@ Transform:
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
-  m_Children:
-  - {fileID: 696926027}
+  m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
