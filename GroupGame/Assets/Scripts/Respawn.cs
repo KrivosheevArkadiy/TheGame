@@ -13,28 +13,23 @@ public class Respawn : MonoBehaviour {
         _class = GameObject.Find("UIManager").GetComponent<UIManagerScript>()._pick;
         _manager = GameObject.Find("UIManager");
 
-
-        if (_class == 1)
+        switch (_class)
         {
+            case 1:
+                Instantiate(_war, transform.position, transform.rotation);
+                Debug.Log("war");
+                break;
 
-
-            Instantiate(_war, transform.position, transform.rotation);
-            Debug.Log("war");
+            case 2:
+                Instantiate(_arch, transform.position, transform.rotation);
+                Debug.Log("arch");
+                break;
+            case 3:
+                Instantiate(_wiz, transform.position, transform.rotation);
+                Debug.Log("wiz");
+                break;
         }
-        if (_class == 2)
-        {
-
-
-            Instantiate(_arch, transform.position, transform.rotation);
-            Debug.Log("arch");
-        }
-        if (_class == 3)
-        {
-
-
-            Instantiate(_wiz, transform.position, transform.rotation);
-            Debug.Log("wiz");
-        }
+        
     }
 
     void Start()
