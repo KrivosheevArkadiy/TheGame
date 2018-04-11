@@ -1,6 +1,7 @@
 ﻿using UnityEngine;
+using UnityEngine.AI;
 using Assets.Scripts.Interfaces;
-using Assets.Scripts.Objects.Weapons;
+using Assets.Scripts.Tools;
 
 namespace Assets.Scripts.Objects.Entities.Enemies
 {
@@ -8,44 +9,49 @@ namespace Assets.Scripts.Objects.Entities.Enemies
     /// Base for all types of enemies 
     /// </summary>
 
+    [RequireComponent(typeof(NavMeshAgent))]
     public abstract class BaseEnemy : BaseObjectScene, ISetDamage
     {
-        protected GameObject _target;
+        protected Transform _target;
         [SerializeField]
         protected float _hp = 100.0f;
         [SerializeField]
-        protected float _brakeDamage;
-        [SerializeField]
         protected float _moveSpeed;
+        protected bool _isDeath = false;
+        protected NavMeshAgent _navMashAgent;
+        [SerializeField]
+        protected float _stoppingDist = 3;
+        [SerializeField]
+        protected float _attackDist = 4.5f;
+        protected Vision _vision;
 
         #region Properties
-
-        public float GetBrakeDamage
-        {
-            get { return _brakeDamage; }
-        }
 
         public float GetHp
         {
             get { return _hp; }
         }
 
+        public NavMeshAgent GetNavMashAgent
+        {
+            get { return _navMashAgent; }
+        }
+
         #endregion
 
         #region UnityFunc
 
-        protected virtual void Start()
+        protected virtual void Awake()
         {
-            _target = GameObject.FindGameObjectWithTag("Player");
+            base.Awake();
+            _target = GameObject.FindGameObjectWithTag("Player").transform;
+            _navMashAgent = GetComponent<NavMeshAgent>();
+            _vision = new Vision();
         }
 
-        protected virtual void OnTriggerEnter(Collider collision)
+        protected virtual void Start()
         {
-            var tempCollison = collision.gameObject;
-            if (tempCollison.GetComponent<Player>() != null)
-            {
-                SetCollisionDamage(collision.gameObject.GetComponent<ISetDamage>());
-            }
+            Main.Instance.GetBotsController.AddBotToList(this);
         }
 
         #endregion
@@ -61,14 +67,10 @@ namespace Assets.Scripts.Objects.Entities.Enemies
             }
         }  
 
-        protected virtual void SetCollisionDamage(ISetDamage obj)
-        {
-            if (obj == null) return;
-            obj.SetDamage(_brakeDamage);
-        }
-
         protected virtual void Death()
         {
+            _isDeath = true;
+            Main.Instance.GetBotsController.RemoveBotFromList(this);
             Destroy(_instanceObject);
         }
 

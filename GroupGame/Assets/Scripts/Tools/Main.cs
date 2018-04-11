@@ -13,6 +13,7 @@ namespace Assets.Scripts.Tools
         private GameObject _controllersGameObject;
         private InputController _inputController;
         private PlayerController _playerController;
+        private BotsController _botsController;
 
         public enum PhaseType {Dialog, Runner, Shooter};
 
@@ -21,6 +22,7 @@ namespace Assets.Scripts.Tools
             _controllersGameObject = new GameObject() { name = "Controllers" };
             _inputController = _controllersGameObject.AddComponent<InputController>();
             _playerController = _controllersGameObject.AddComponent<PlayerController>();
+            _botsController = _controllersGameObject.AddComponent<BotsController>();
         }
 
         #region Properties
@@ -33,6 +35,11 @@ namespace Assets.Scripts.Tools
         public PlayerController GetPlayerController
         {
             get { return _playerController; }
+        }
+
+        public BotsController GetBotsController
+        {
+            get { return _botsController; }
         }
 
         #endregion
