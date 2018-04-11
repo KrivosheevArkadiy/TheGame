@@ -7,42 +7,40 @@ using System;
 
 public class UIManagerScript : MonoBehaviour
 {
-    
     public GameObject _manager;
+    public string _pick = "none";
     
-
-
-    public int _pick = 0;
 
     void Awake()
     {
-        DontDestroyOnLoad(transform.gameObject);
-        
+        _manager = gameObject;
+        Load();
     }
-
-    public void Start()
+    public void Save()
     {
-        
+        PlayerPrefs.SetString("pick", _manager.GetComponent<UIManagerScript>()._pick);
     }
-
-    
-
+    public void Load()
+    {
+        _manager.GetComponent<UIManagerScript>()._pick = PlayerPrefs.GetString("pick");
+    }
+ 
     public void PickWar()
     {
-        _pick = 1;
+        _pick = "warrior";
         Debug.Log("save warrior");
         SceneManager.LoadScene("Level1");
     }
     public void PickArch()
     {
-        _pick = 2;
+        _pick = "archer";
         Debug.Log("save archer");
         SceneManager.LoadScene("Level1");
     }
 
     public void PickWizard()
     {
-        _pick = 3;
+        _pick = "wizard";
         Debug.Log("save wizard");
         SceneManager.LoadScene("Level1");
     }

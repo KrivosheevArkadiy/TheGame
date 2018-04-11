@@ -3,7 +3,7 @@
 public class Respawn : MonoBehaviour {
 
     public GameObject _manager;
-    public int _class;
+    public string _class;
     public GameObject _war;
     public GameObject _arch;
     public GameObject _wiz;
@@ -15,16 +15,15 @@ public class Respawn : MonoBehaviour {
 
         switch (_class)
         {
-            case 1:
+            case "warrior":
                 Instantiate(_war, transform.position, transform.rotation);
                 Debug.Log("war");
                 break;
-
-            case 2:
+            case "archer":
                 Instantiate(_arch, transform.position, transform.rotation);
                 Debug.Log("arch");
                 break;
-            case 3:
+            case "wizard":
                 Instantiate(_wiz, transform.position, transform.rotation);
                 Debug.Log("wiz");
                 break;
