@@ -24,7 +24,12 @@ public class UIManagerScript : MonoBehaviour
     {
         _manager.GetComponent<UIManagerScript>()._pick = PlayerPrefs.GetString("pick");
     }
- 
+    public void DeleteSave()
+    {
+        PlayerPrefs.DeleteAll();
+        Debug.Log("Save kill");
+    }
+    
     public void PickWar()
     {
         _pick = "warrior";
