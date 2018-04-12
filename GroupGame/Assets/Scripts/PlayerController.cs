@@ -66,7 +66,10 @@ public class PlayerController : MonoBehaviour {
         if (Input.GetKey(KeyCode.D) || Input.GetKey(KeyCode.RightArrow))
         {
             player.transform.position += player.transform.right * speed * Time.deltaTime;
+            _anim.SetBool("RightSideStep", true);
+            _anim.SetBool("IsMoving", false);
         }
+        else _anim.SetBool("RightSideStep", false);
         if (Input.GetKey(KeyCode.Mouse0))
             _anim.SetTrigger("Attack1Trigger");
         
