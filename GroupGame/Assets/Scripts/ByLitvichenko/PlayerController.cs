@@ -62,7 +62,10 @@ public class PlayerController : MonoBehaviour {
         if (Input.GetKey(KeyCode.A) || Input.GetKey(KeyCode.LeftArrow))
         {
             player.transform.position -= player.transform.right * speed * Time.deltaTime;
+            _anim.SetBool("LeftSideStep", true);
+
         }
+        else _anim.SetBool("LeftSideStep", false);
         if (Input.GetKey(KeyCode.D) || Input.GetKey(KeyCode.RightArrow))
         {
             player.transform.position += player.transform.right * speed * Time.deltaTime;
